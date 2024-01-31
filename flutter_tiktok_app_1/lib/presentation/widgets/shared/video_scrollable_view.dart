@@ -16,6 +16,9 @@ class VideoScrollableView extends StatelessWidget {
         final videoPost = videos[index];
         return Stack(
           children: [
+            SizedBox.expand(
+              child: Container(color: Colors.red),
+            ),
             Positioned(
                 bottom: 40, right: 20, child: VideoButton(video: videoPost))
           ],
