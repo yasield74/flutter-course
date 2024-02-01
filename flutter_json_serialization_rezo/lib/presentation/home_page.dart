@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_json_serialization_rezo/data/settings.dart';
+import 'package:flutter_json_serialization_rezo/data/user.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
+
   final Map<String, dynamic> settingsData = {
     "timestamp": "2021-10-21T22:47:52.262062",
     "user": {
@@ -12,9 +15,25 @@ class HomePage extends StatelessWidget {
     "theme-colors": [4282339765, 4278238420]
   };
 
-  void convertToJson() {}
-  void convertFromJson() {}
-  void convertToDatabaseJson() {}
+  final settings = const Settings(
+      user: User(email: 'some@email.com', phoneNumber: 554041),
+      isPremium: false,
+      themeColors: [Colors.cyan, Colors.indigo]);
+
+  void convertToJson() {
+    final json = settings.toJson();
+    print('To Json: $json');
+  }
+
+  void convertFromJson() {
+    final settings = Settings.fromJson(settingsData);
+    print('From JSON: $settingsData');
+  }
+
+  void convertToDatabaseJson() {
+    final json = settings.toDatabaseJson();
+    print('To Database json $json');
+  }
 
   @override
   Widget build(BuildContext context) {
