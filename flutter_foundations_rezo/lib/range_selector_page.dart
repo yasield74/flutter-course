@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_foundations_rezo/randomizer_page.dart';
+import 'package:flutter_foundations_rezo/range_selected_form.dart';
 
 class RangeSelectorPage extends StatefulWidget {
   const RangeSelectorPage({super.key});
@@ -10,6 +12,7 @@ class RangeSelectorPage extends StatefulWidget {
 class _RangeSelectorPageState extends State<RangeSelectorPage> {
   int _min = 0;
   int _max = 0;
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -17,68 +20,22 @@ class _RangeSelectorPageState extends State<RangeSelectorPage> {
       appBar: AppBar(
         title: const Text('Select Range'),
       ),
-      body: Form(
-          child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            RangeSelectorTextFormField(
-              intValueSetter: (value) {
-                _min = value;
-              },
-              labelText: 'Minimum',
-            ),
-            const SizedBox(
-              height: 12,
-            ),
-            RangeSelectorTextFormField(
-              labelText: 'Maximum',
-              intValueSetter: (value) {
-                _max = value;
-              },
-            ),
-          ],
-        ),
-      )),
+      body: RangeSelectorForm(
+        minValueSetter: (value) => _min = value,
+        maxValueSetter: (value) => _max = value,
+        formKey: formKey,
+      ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.arrow_forward),
         onPressed: () {
-          //TODO: Validate the form.
-          //TODO: Navigate to the generator page.
+          if (formKey.currentState?.validate() == true) {
+            formKey.currentState?.save();
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+              return RandomizerPage(min: _min, max: _max);
+            }));
+          }
         },
       ),
-    );
-  }
-}
-
-class RangeSelectorTextFormField extends StatelessWidget {
-  const RangeSelectorTextFormField({
-    super.key,
-    required this.labelText,
-    required this.intValueSetter,
-  });
-
-  final String labelText;
-  final void Function(int value) intValueSetter;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      keyboardType:
-          const TextInputType.numberWithOptions(decimal: false, signed: true),
-      decoration: InputDecoration(
-          border: const OutlineInputBorder(), labelText: labelText),
-      onSaved: (newValue) {
-        intValueSetter(int.parse(newValue ?? ''));
-      },
-      validator: (value) {
-        if (value == null || int.tryParse(value) == null) {
-          return 'Must be a number';
-        } else {
-          return null;
-        }
-      },
     );
   }
 }
