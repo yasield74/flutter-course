@@ -1,40 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_foundations_rezo/range_selector_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const AppWidget());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class AppWidget extends StatelessWidget {
+  const AppWidget({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Randomizer',
       home: RangeSelectorPage(),
     );
-  }
-}
-
-class RangeSelectorPage extends StatefulWidget {
-  const RangeSelectorPage({super.key});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-
-  @override
-  State<RangeSelectorPage> createState() => _RangeSelectorPageState();
-}
-
-class _RangeSelectorPageState extends State<RangeSelectorPage> {
-  @override
-  Widget build(BuildContext context) {
-    return Container();
   }
 }
