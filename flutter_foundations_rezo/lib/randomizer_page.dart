@@ -27,7 +27,8 @@ class _RandomizerPageState extends State<RandomizerPage> {
           onPressed: () {
             setState(() {
               _generatedNumber = widget.min +
-                  randomGenerator.nextInt(widget.max + 1 - widget.max);
+                  randomGenerator.nextInt(widget.max - widget.min + 1);
+              print(_generatedNumber);
             });
           },
           label: const Text('Generate')),
@@ -35,3 +36,6 @@ class _RandomizerPageState extends State<RandomizerPage> {
     );
   }
 }
+
+
+//TODO: 1:40hrs
