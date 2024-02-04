@@ -16,12 +16,12 @@ class RandomizerPage extends ConsumerWidget {
       appBar: AppBar(title: const Text('Randomizer')),
       body: Center(
           child: Text(
-        randomizer.generatedNumber?.toString() ?? 'Generate a number',
+        randomizer.generatedNumer?.toString() ?? 'Generate a number',
         style: const TextStyle(fontSize: 42),
       )),
       floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
-            ref.read(randomizerProvider).generateRandomNumber();
+            ref.read(randomizerProvider.notifier).generateRandomNumber();
           },
           label: const Text('Generate')),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

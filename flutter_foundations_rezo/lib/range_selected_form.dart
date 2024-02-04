@@ -23,7 +23,7 @@ class RangeSelectorForm extends ConsumerWidget {
             children: [
               RangeSelectorTextFormField(
                 intValueSetter: (value) =>
-                    ref.read(randomizerProvider).min = value,
+                    ref.read(randomizerProvider.notifier).setMin(value),
                 labelText: 'Minimum',
               ),
               const SizedBox(
@@ -32,7 +32,7 @@ class RangeSelectorForm extends ConsumerWidget {
               RangeSelectorTextFormField(
                 labelText: 'Maximum',
                 intValueSetter: (value) =>
-                    ref.read(randomizerProvider).max = value,
+                    ref.read(randomizerProvider.notifier).setMax(value),
               ),
             ],
           ),
