@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_foundations_rezo/random_change_notifier.dart';
 import 'package:flutter_foundations_rezo/range_selector_page.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const AppWidget());
@@ -11,10 +13,13 @@ class AppWidget extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Randomizer',
-      home: RangeSelectorPage(),
+    return ChangeNotifierProvider(
+      create: (context) => RandomizerChangeNotifier(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Randomizer',
+        home: RangeSelectorPage(),
+      ),
     );
   }
 }
