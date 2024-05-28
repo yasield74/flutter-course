@@ -17,11 +17,11 @@ const appMenuItems = <MenuItem>[
   MenuItem(
       title: 'Botones',
       subTitle: 'Varios botones en flutter',
-      link: '/buttons',
+      link: 'buttons_screen',
       icon: Icons.smart_button_outlined),
   MenuItem(
       title: 'Tarjetas',
       subTitle: 'Un contenedor estilizado',
-      link: '/cards',
+      link: 'cards_screen',
       icon: Icons.credit_card)
 ];
