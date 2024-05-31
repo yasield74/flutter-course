@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class ProgressScreen extends StatelessWidget {
   const ProgressScreen({super.key});
@@ -19,7 +17,7 @@ class ProgressScreen extends StatelessWidget {
 }
 
 class _ProgressBarView extends StatelessWidget {
-  const _ProgressBarView({super.key});
+  const _ProgressBarView();
 
   @override
   Widget build(BuildContext context) {
