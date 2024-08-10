@@ -23,5 +23,10 @@ const appMenuItems = <MenuItem>[
       title: 'Tarjetas',
       subTitle: 'Un contenedor estilizado',
       link: 'cards_screen',
-      icon: Icons.credit_card)
+      icon: Icons.credit_card),
+  MenuItem(
+      title: 'Animated Container',
+      subTitle: 'Stateful widget animated',
+      link: '/animated',
+      icon: Icons.check_box_outlined)
 ];
