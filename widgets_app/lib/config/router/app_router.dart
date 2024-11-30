@@ -11,12 +11,12 @@ final appRouter = GoRouter(
       builder: (context, state) => const HomeScreen(),
     ),
     GoRoute(
-      path: '/buttons',
+      path: '/buttons_screen',
       name: ButtonsScreen.name,
       builder: (context, state) => const ButtonsScreen(),
     ),
     GoRoute(
-      path: '/cards',
+      path: '/cards_screen',
       name: CardsScreen.name,
       builder: (context, state) => const CardsScreen(),
     ),
