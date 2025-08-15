@@ -1,0 +1,2 @@
+E:/Development/flutter-course/cinemapedia_app/android/app/.cxx/Debug/wb426k4w/arm64-v8a/CMakeFiles/edit_cache.dir
+E:/Development/flutter-course/cinemapedia_app/android/app/.cxx/Debug/wb426k4w/arm64-v8a/CMakeFiles/rebuild_cache.dir
