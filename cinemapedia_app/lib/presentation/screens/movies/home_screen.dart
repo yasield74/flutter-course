@@ -29,23 +29,61 @@ class _HomeViewState extends ConsumerState<_HomeView> {
   initState() {
     super.initState();
     ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
+    ref.read(popularMoviesProvider.notifier).loadNextPage();
+    ref.read(topRatedMoviesProvider.notifier).loadNextPage();
+    ref.read(upcomingMoviesProvider.notifier).loadNextPage();
   }
 
   @override
   Widget build(BuildContext context) {
     final slideShowMovie = ref.watch(moviesSlideshowProvider);
     final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
-    return Column(
-      children: [
-        CustomAppBar(),
-        MoviesSlideshow(movies: slideShowMovie),
-        MovieHorizontalListView(
-        movies: nowPlayingMovies,
-        title: 'Playing now',
-        subTitle: 'Today',
-        loadNextPage: () => ref.read( nowPlayingMoviesProvider.notifier).loadNextPage(),
-        )
-      ],
+    final popularMovies = ref.watch(popularMoviesProvider);
+    final topRatedMovies = ref.watch(topRatedMoviesProvider);
+    final upcomingMovies = ref.watch(upcomingMoviesProvider);
+
+    return CustomScrollView(
+      slivers: [
+        SliverAppBar(
+          floating: true,
+          flexibleSpace: FlexibleSpaceBar(
+            title: CustomAppBar(),
+          ),
+
+        ),
+        SliverList(delegate: SliverChildBuilderDelegate((context, index) {
+          return   Column(
+          children: [          
+          MoviesSlideshow(movies: slideShowMovie),
+          MovieHorizontalListView(
+          movies: nowPlayingMovies,
+          title: 'Playing now',
+          subTitle: 'Today',
+          loadNextPage: () => ref.read( nowPlayingMoviesProvider.notifier).loadNextPage(),
+          ),
+           MovieHorizontalListView(
+          movies: popularMovies,
+          title: 'Popular Movies',
+          subTitle: 'Today',
+          loadNextPage: () => ref.read( nowPlayingMoviesProvider.notifier).loadNextPage(),
+          ),
+          SizedBox(height: 25,),
+          MovieHorizontalListView(
+            movies: topRatedMovies,
+            title: 'Top Rated Movies',
+            subTitle: 'Today',
+            loadNextPage: () => ref.read(topRatedMoviesProvider.notifier).loadNextPage(),
+          ),
+          MovieHorizontalListView(
+            movies: upcomingMovies,
+            title: 'Upcoming Movies',
+            subTitle: 'Today',
+            loadNextPage: () => ref.read(upcomingMoviesProvider.notifier).loadNextPage(),
+          ),
+        ],
+      );
+        }, childCount: 1)),
+      ]
     );
   }
 }

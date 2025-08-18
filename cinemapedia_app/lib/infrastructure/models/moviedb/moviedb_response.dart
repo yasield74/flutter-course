@@ -38,8 +38,6 @@ class MovieDbResponse {
         totalResults: json["total_results"],
       );
 
-  //TODO: theres a recomendation to change this code dates == null ? null: dates!.toJson()
-
   Map<String, dynamic> toJson() => {
     "dates": dates?.toJson(),
     "page": page,
