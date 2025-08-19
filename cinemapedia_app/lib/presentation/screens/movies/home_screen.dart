@@ -1,8 +1,8 @@
-import 'package:cinemapedia_app/presentation/providers/movies/movies_providers.dart';
-import 'package:cinemapedia_app/presentation/providers/movies/movies_slidesow_provider.dart';
 import 'package:cinemapedia_app/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../providers/providers.dart';
 
 class HomeScreen extends StatelessWidget {
   static const name = 'home-screen';
@@ -41,6 +41,13 @@ class _HomeViewState extends ConsumerState<_HomeView> {
     final popularMovies = ref.watch(popularMoviesProvider);
     final topRatedMovies = ref.watch(topRatedMoviesProvider);
     final upcomingMovies = ref.watch(upcomingMoviesProvider);
+    final initialLoading = ref.watch(initialLoadingProvider);
+
+
+    if(initialLoading) {
+      return const  FullScreenLoader();
+    }
+    
 
     return CustomScrollView(
       slivers: [
