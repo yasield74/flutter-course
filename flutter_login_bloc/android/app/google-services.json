@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1027682471808",
+    "project_id": "auth-flutter-bloc-e0189",
+    "storage_bucket": "auth-flutter-bloc-e0189.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1027682471808:android:0eeced1cacb77db1c37b65",
+        "android_client_info": {
+          "package_name": "com.example.flutter_login_bloc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBM0RfRMDNzbrBPrcpp_9Ih3EW6Uqt1Iio"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
